@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fO1Kge4KMZtivQWkhBXXyaIw4wJqK+sXr0qk0Z/wfUjvEwSuQqJ1RemOm2fgyLas7S1eYj8PchTtgjRnz+juiQ==",
+  "dgSpecHash": "TWEctCXzSJZUVGO05N0u4Tc+V9bF9+38Vf1waR5s9WBsPf0jOSbna0LuechXD2fpTwv+n0UOIAUVyvafLtie4w==",
   "success": true,
-  "projectFilePath": "D:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\QuizApp.csproj",
+  "projectFilePath": "d:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\QuizApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\George\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\George\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
