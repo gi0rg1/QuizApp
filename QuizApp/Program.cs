@@ -14,6 +14,7 @@ namespace QuizApp
             // Add Repositoriess to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IQuestionsRepository, QuestionsRepository>();
+            builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 
             // Register DbContext
             var connectionString = builder.Configuration.GetConnectionString("QuizAppDB");

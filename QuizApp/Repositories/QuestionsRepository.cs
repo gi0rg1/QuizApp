@@ -31,5 +31,10 @@ namespace QuizApp.Repositories
             _context.SaveChanges();
             return question;
         }
+        public Answer GetAnswer(int id)
+        {
+            var answer = _context.Answers.FirstOrDefault(x => x.ID == id);
+            return answer;
+        }
     }
 }

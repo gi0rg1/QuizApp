@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuizApp.Context;
 
@@ -11,9 +12,11 @@ using QuizApp.Context;
 namespace QuizApp.Migrations
 {
     [DbContext(typeof(QuizAppDBContext))]
-    partial class QuizAppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240402154441_PlayerRoundInput")]
+    partial class PlayerRoundInput
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,51 +49,49 @@ namespace QuizApp.Migrations
                     b.ToTable("Answers");
                 });
 
-            modelBuilder.Entity("QuizApp.Models.Attempt", b =>
+            modelBuilder.Entity("QuizApp.Models.Input", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("AnswerId")
+                    b.Property<int>("AnswerID")
                         .HasColumnType("int");
 
-                    b.Property<int>("IsCorrect")
+                    b.Property<bool>("IsCorrect")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("RoundID")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoundId")
-                        .HasColumnType("int");
+                    b.HasKey("ID");
 
-                    b.HasKey("Id");
+                    b.HasIndex("RoundID");
 
-                    b.HasIndex("AnswerId");
-
-                    b.HasIndex("RoundId");
-
-                    b.ToTable("Attempts");
+                    b.ToTable("Inputs");
                 });
 
             modelBuilder.Entity("QuizApp.Models.Player", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<float>("HighScore")
-                        .HasColumnType("real");
+                    b.Property<int>("HighScore")
+                        .HasColumnType("int");
 
-                    b.Property<string>("PlayerName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Wins")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("Players");
                 });
@@ -104,7 +105,6 @@ namespace QuizApp.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("QuestionText")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -120,10 +120,10 @@ namespace QuizApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<bool>("IsWon")
-                        .HasColumnType("bit");
-
                     b.Property<int>("PlayerID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Score")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -142,17 +142,11 @@ namespace QuizApp.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("QuizApp.Models.Attempt", b =>
+            modelBuilder.Entity("QuizApp.Models.Input", b =>
                 {
-                    b.HasOne("QuizApp.Models.Answer", null)
-                        .WithMany("Attempts")
-                        .HasForeignKey("AnswerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("QuizApp.Models.Round", null)
-                        .WithMany("Attempts")
-                        .HasForeignKey("RoundId")
+                        .WithMany("Inputs")
+                        .HasForeignKey("RoundID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -164,11 +158,6 @@ namespace QuizApp.Migrations
                         .HasForeignKey("PlayerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("QuizApp.Models.Answer", b =>
-                {
-                    b.Navigation("Attempts");
                 });
 
             modelBuilder.Entity("QuizApp.Models.Player", b =>
@@ -183,7 +172,7 @@ namespace QuizApp.Migrations
 
             modelBuilder.Entity("QuizApp.Models.Round", b =>
                 {
-                    b.Navigation("Attempts");
+                    b.Navigation("Inputs");
                 });
 #pragma warning restore 612, 618
         }

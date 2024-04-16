@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\QuizApp.csproj": {}
+    "D:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\QuizApp.csproj": {}
   },
   "projects": {
-    "d:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\QuizApp.csproj": {
+    "D:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\QuizApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\QuizApp.csproj",
+        "projectUniqueName": "D:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\QuizApp.csproj",
         "projectName": "QuizApp",
-        "projectPath": "d:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\QuizApp.csproj",
+        "projectPath": "D:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\QuizApp.csproj",
         "packagesPath": "C:\\Users\\George\\.nuget\\packages\\",
-        "outputPath": "d:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\obj\\",
+        "outputPath": "D:\\Desktop\\giorgi_chiabrishvili\\QuizApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\George\\AppData\\Roaming\\NuGet\\NuGet.Config",
